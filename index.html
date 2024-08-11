@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Rock, Paper, Scissors</title>
+    <style>
+        body {
+            background:rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: rgba(248, 236, 12, 0.871);
+            margin-top: 20px;
+        }
+
+        #board {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        gap: 10px;
+        margin: 20px auto;
+        width: 300px;
+    }
+
+        #message {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <br><br><br><br><br><br>
+    <h1>Rock, Paper, Scissors</h1>
+    <div id="board">
+        <img src = "rock.png" width="200" height="200" onclick="makemove(0)"></img> 
+        <img src = "paper.png" width="200" height="200" onclick="makemove(1)"></img> 
+        <img src = "scissors.png"width="200" height="200" onclick="makemove(2)"></img> 
+    </div>
+    <br>
+    <p id="message"></p>
+    <script>
+        function makemove(user) {
+            const options = ["Rock", "Paper", "Scissors"];
+            const comp = Math.floor(Math.random() * options.length);
+            const compChoice = options[comp];
+            const userChoice = options[user];
+            let result;
+
+            if (comp === user) {
+                result = "Tie";
+            } else if (
+                (comp === 0 && user === 1) ||
+                (comp === 1 && user === 2) ||
+                (comp === 2 && user === 0)
+            ) {
+                result = "You Win";
+            } else {
+                result = "Computer Wins";
+            }
+
+            document.getElementById('message').innerText = `Computer chose ${compChoice}, You chose ${userChoice}. Result: ${result}`;
+        }
+    </script>
+</body>
+</html>
